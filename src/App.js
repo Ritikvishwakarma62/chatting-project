@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useEffect} from 'react'
+import AllRoute from './allRoutes/AllRoute'
+import Header from './component/shared/Header'
+import {useDispatch} from 'react-redux'
+import {getAll} from './redux/MessageSlice'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  let Dispatch = useDispatch()
+
+  useEffect(()=>{
+    Dispatch(getAll())
+  },[])
+
+   return (
+  <>
+    <AllRoute/>
+  </>
+  )
 }
 
-export default App;
+export default App
